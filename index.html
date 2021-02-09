@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <form id="signupform">
+            <h1 style="text-align: center;">Sign up here!!!</h1>
+            <label for="username">User Name:</label>
+                <input id="username" type="text" required>
+            <label for="useremail">User Email:</label>
+                <input id="useremail" type="email" required>
+            <label for="bdate">User Birthdate:</label>
+                <input id="bdate" type="date" required>
+            <button type="submit">Sign up</button>
+        </form>
+        <div class="message"></div>
+    </section>
+    
+    
+    <script>
+
+        var form = document.querySelector("#signupform");
+        var username = document.querySelector("#username");
+        var useremail = document.querySelector("#useremail");
+        var bdate = document.querySelector("#bdate");
+        var msg = document.querySelector(".message");
+
+        useremail.addEventListener("input", function (event) {
+            if (useremail.validity.typeMismatch) {
+                useremail.setCustomValidity("Please enter an valid e-mail address!");
+            } else {
+                useremail.setCustomValidity("");
+            }
+        });
+
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+
+            try{
+                if(Date.now()- new Date(bdate.value).getTime()>=5.676e+11){
+                    console.log("18yrs>");
+                    let url = "https://jsonplaceholder.typicode.com/posts"
+
+                    const data = {
+                                    title : "Signed Up User",
+                                    body: {
+                                        username: username.value,
+                                        useremail: useremail.value,
+                                        bdate:bdate.value
+                                    }
+                                }
+
+                    fetch(url, {
+                    method: 'POST', // or 'PUT'
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                    })
+                    .then(response => response.json())
+                    .then(json => {
+                        form.style.display = "none"
+                        msg.innerHTML = `<h1>Thank you ${json.body.username} for signing up with us!!!</h1><a href="/">Go back</a>`
+                    })
+                    .catch((error) => {
+                    console.error('Error:', error);
+                    });
+
+                }else{
+                    throw new Error("Cannot proceed as user is below 18yrs age")
+                }
+            }catch(e){
+                msg.innerHTML = `<p style="text-align:left">Need to be 18+ yrs old to sign up</p>`
+                console.log(e);
+            }              
+
+        })
+
+    </script>
+</body>
+</html>
+

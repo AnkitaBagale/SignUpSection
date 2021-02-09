@@ -1,0 +1,60 @@
+
+body{
+    width: 100%;
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+section{
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    background-color: rgb(7, 7, 56);
+    padding: 4rem;
+}
+
+label, input{
+    display: block;
+    padding: 0.5rem 1rem 0.5rem 0;
+}
+input{
+    width: 100%;
+    color:rgb(7, 7, 56);
+    padding-left: 0.5rem;
+    border: none;
+}
+
+button{
+    color:  rgb(7, 7, 56);
+    font-weight: bold;
+    font-size: 1rem;
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+button:hover{
+    background-color: orange;
+}
+
+.message{
+    text-align: center;
+}
+.message a{
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+.message a:hover{
+    font-weight: 700;
+    border-bottom-width: 2px;
+    color: orange;
+}
+
+input:focus{
+    outline: 3px solid orange;
+}
