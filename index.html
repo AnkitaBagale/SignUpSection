@@ -27,11 +27,11 @@
     
     <script>
 
-        var form = document.querySelector("#signupform");
-        var username = document.querySelector("#username");
-        var useremail = document.querySelector("#useremail");
-        var bdate = document.querySelector("#bdate");
-        var msg = document.querySelector(".message");
+        const form = document.querySelector("#signupform");
+        const username = document.querySelector("#username");
+        const useremail = document.querySelector("#useremail");
+        const bdate = document.querySelector("#bdate");
+        const msg = document.querySelector(".message");
 
         useremail.addEventListener("input", function (event) {
             if (useremail.validity.typeMismatch) {
@@ -47,7 +47,7 @@
             try{
                 if(Date.now()- new Date(bdate.value).getTime()>=5.676e+11){
                     console.log("18yrs>");
-                    let url = "https://jsonplaceholder.typicode.com/posts"
+                    const url = "https://jsonplaceholder.typicode.com/posts"
 
                     const data = {
                                     title : "Signed Up User",
